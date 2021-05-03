@@ -1,0 +1,84 @@
+CSCI585 Homework 2
+
+Question 1: Given a time range (eg. Jan 1 to Jan 31, 2021), in that interval, what is the average amount a procedure cost, and how long did it take on the average?
+
+Answer: https://livesql.oracle.com/apex/livesql/s/lgld595mw1rh80m0qinrvszig
+
+Assumptions: 
+
+-- I have used range Jan 1 to Jan 31, 2021 to output the answer.
+-- Time taken for each appointment is recorded in Scheduling table as Duration_of_visit and total amount is recorded in Billing_Record table as Total_Bill_Amount, I have taken join of these two tables to get the answer.
+-- Output shows "Procedure_ID", "Average_Amount" and "Average_Duration" for each procedure performed in the given interval.
+
+
+SQL Query: 
+
+select Procedure_Id, round(avg(Total_Bill_Amount)) as Average_amount, round(avg(Duration_Of_Visit)) as Average_Duration 
+from Billing_Record 
+         LEFT JOIN Scheduling on Billing_Record.SCHEDULING_ID = Scheduling.SCHEDULING_ID 
+where Date_Of_Treatment >= date '2021-01-01' 
+  and Date_Of_Treatment <= date '2021-01-31' 
+group by Procedure_Id;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 2: Given a date, what is the income for that date, from all the procedures performed that day?
+
+Answer: https://livesql.oracle.com/apex/livesql/s/lglflugvn56iyitw86e6alax6
+
+Assumptions: 
+
+-- I have selected two dates "Jan 14 2021" and "Feb 08 2021" to output the answer (2 separate queries).
+-- Output shows "Date_of_treatment" and "Total_income_for_day" for given date.
+
+SQL Query:
+
+select Date_Of_Treatment, sum(Total_Bill_Amount) as Total_Income_for_day from Billing_Record 
+where Date_Of_Treatment = date '2021-01-14' group by Date_Of_Treatment;
+
+select Date_Of_Treatment, sum(Total_Bill_Amount) as Total_Income_for_day from Billing_Record 
+where Date_Of_Treatment = date '2021-02-08' group by Date_Of_Treatment;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 3: Write a query that will pick out only the employees who can do every task in a task table.
+
+Answer: https://livesql.oracle.com/apex/livesql/s/lgle3rqhm91eemlq38zt44fql
+
+Assumptions:
+
+-- There are 4 tables: Employee, Skill, Employee_Skill (Capabilities), Skills_Query.
+-- Output shows "Employee_ID" and "Skill" of only those employees who possesses all the skills mentioned in Skills_Query.
+
+SQL Query:
+
+select * 
+from (select Employee_ID 
+      from Employee_Skill 
+      where Skill_ID in (Select Skill_ID from Skill where Skill_Name IN (select * from Skills_Query)) 
+      group by Employee_ID 
+      having count(Employee_ID) = (select distinct(count(Skill_Name)) from Skills_Query)) table1 
+         CROSS JOIN 
+     (select * from Skills_Query) table2 
+Order by table1.Employee_ID;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 4: Come up with another reasonable query that the owners would want to make, using all the data in their db.
+
+Description of my query: I am finding count of number of appointments scheduled for doctors in a given range of date. This will help the dental staff to know the requirement of which type of doctor (Surgery, Specialist, etc) is more and will help them to hire more of such doctors.
+
+Answer: https://livesql.oracle.com/apex/livesql/s/lglb48vkx26x5qpobib6svco8
+
+Assumptions:
+
+-- There are 4 tables "Patient", "Staff", "Room", "Scheduling".
+-- I am finding count of appointments of doctors in given range "Jan 1 2021 to Jan 31 2021".
+-- Output shows "Doctor_ID" and "Number_of_Appointments" for the given range of date.
+
+SQL Query:
+
+select staff_id as Doctor_ID, count(staff_id) as Number_of_appointments from staff natural join scheduling where staff_type='Doctor' 
+and (to_char(start_time, 'yyyy/MM/dd')>='2021/01/01' and to_char(start_time, 'yyyy/MM/dd')<='2021/01/31') 
+group by staff_id;
+

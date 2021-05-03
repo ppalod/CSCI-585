@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+<Document>
+<Style id="z1">
+<IconStyle><Icon><href>http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png</href></Icon></IconStyle>
+</Style>
+<Style id="PolyStyle1">
+	<LineStyle>
+		<color>ff0000cc</color>
+		<width>8</width>
+		<colorMode>random</colorMode>
+	</LineStyle>
+</Style>
+<Style id="PolyStyle2">
+	<PolyStyle>
+	  <color>7f00ff00</color>
+	  <colorMode>random</colorMode>
+	</PolyStyle>
+</Style>
+<Folder>
+	<name>Convex Hull</name>
+	<Placemark>
+		<name>Convex Hull</name>
+		<styleUrl>#PolyStyle2</styleUrl>
+		<Polygon>
+		  <extrude>1</extrude>
+		  <altitudeMode>relativeToGround</altitudeMode>
+		  <outerBoundaryIs>
+			<LinearRing>
+			  <coordinates>
+				-118.286595,34.018861,10
+				-118.289474,34.019707,10 
+				-118.288383,34.030597,10 
+				-118.282701,34.021942,10 
+				-118.282495,34.018969,10
+				-118.286595,34.018861,10
+			  </coordinates>
+			</LinearRing>
+		  </outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Folder>
+<Folder>
+	<name>Nearest Neighbours</name>
+
+	<Placemark>
+	  <name>Point1</name>
+
+	  <styleUrl>#PolyStyle1</styleUrl>
+	  <LineString>
+		<coordinates> 
+			-118.288383,34.030597,30
+			-118.287060,34.023144,30
+		</coordinates>
+	  </LineString>
+	</Placemark>
+
+	<Placemark>
+	  <name>Point2</name>
+	  <styleUrl>#PolyStyle1</styleUrl>
+	  <LineString>
+		<coordinates> 
+			-118.288383,34.030597,30
+			-118.289008,34.021643,30
+		</coordinates>
+	  </LineString>
+	</Placemark>
+
+	<Placemark>
+	  <name>Point3</name>
+	  <styleUrl>#PolyStyle1</styleUrl>
+	  <LineString>
+		<coordinates> 
+			-118.288383,34.030597,30
+			-118.284626,34.022409,30
+		</coordinates>
+	  </LineString>
+	</Placemark>
+
+	<Placemark>
+	  <name>Point4</name>
+	  <styleUrl>#PolyStyle1</styleUrl>
+	  <LineString>
+		<coordinates> 
+			-118.288383,34.030597,30
+			-118.286176,34.020766,30
+		</coordinates>
+	  </LineString>
+	</Placemark>
+   </Folder>
+<Placemark><name>Home</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.288383,34.030597</coordinates></Point> 
+</Placemark>
+<Placemark><name>Literatea</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.283318,34.020278</coordinates></Point> 
+</Placemark>
+<Placemark><name>Lemonade</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.286176,34.020766</coordinates></Point>
+</Placemark>
+<Placemark><name>LittleGalen</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.287060,34.023144</coordinates></Point> 
+</Placemark>
+<Placemark><name>Fertitta</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.282495,34.018969</coordinates></Point>
+</Placemark>
+<Placemark><name>Leavey Lib</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.282701,34.021942</coordinates></Point> 
+</Placemark>
+<Placemark><name>Dohney Lib</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.283708,34.020289</coordinates></Point> 
+</Placemark>
+<Placemark><name>Hoose Lib</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.286595,34.018861</coordinates></Point>
+</Placemark>
+<Placemark><name>VKC Lib</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.284022,34.021449</coordinates></Point>
+</Placemark>
+<Placemark><name>SGM</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.289008,34.021643</coordinates></Point> 
+</Placemark>
+<Placemark><name>SAL</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.289474,34.019707</coordinates></Point>
+</Placemark>
+<Placemark><name>SSC</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.289403,34.020101</coordinates></Point>
+</Placemark>
+<Placemark><name>THH</name>
+<styleUrl>#z1</styleUrl><Point><coordinates>-118.284626,34.022409</coordinates></Point>
+</Placemark>
+</Document></kml>
